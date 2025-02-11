@@ -52,13 +52,13 @@ void HandleData(){
     serial.println(vec.x);
     serial.println(vec.y);
 
-    if(data.command == ActionType::SetPosition){
+    if(data.command == ActionType::Sync){
       Ra.SetAngle(vec.x);
       Dec.SetAngle(vec.y);
-    }else if(data.command == ActionType::MoveToPosition){
+    }else if(data.command == ActionType::GoTo){
       Ra.SlewTo(vec.x);
       Dec.SlewTo(vec.y);
-    } else if(data.command == ActionType::SetVelocity){
+    } else if(data.command == ActionType::SetConstantRate){
       Ra.SetConstantRate(vec.x);
       Dec.SetConstantRate(vec.y);
     } else if(data.command == ActionType::Guide){
