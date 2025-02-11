@@ -1,7 +1,6 @@
 #pragma once
 #include "../Axis/Axis.h"
 
-
 class Align{
 private:
     double ra;

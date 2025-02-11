@@ -1,0 +1,7 @@
+#pragma once
+
+class Vector3{
+public:
+double x,y,z;
+Vector3(double _x,double _y,double _z):x(_x),y(_y),z(_z){}
+};
