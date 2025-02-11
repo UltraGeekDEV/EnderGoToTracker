@@ -69,15 +69,15 @@ void HandleData(){
 }
 
 void loop() {
-  long delta = micros()-prevTime;
-  prevTime = micros();
+  uint32_t curTime = micros();
+  long delta = curTime-prevTime;
 
   if(delta < 0){
-    prevTime = 0;
-    delta = 0;
+    delta = (1UL << 32) - prevTime + curTime;
   }
 
-  double deltaTime = (delta)/1000000.0;
+  prevTime = curTime;
+  double deltaTime = (delta)/1000.0;
 
   Ra.Update(deltaTime);
   Dec.Update(deltaTime);
