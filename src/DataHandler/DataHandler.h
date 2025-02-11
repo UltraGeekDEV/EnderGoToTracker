@@ -8,7 +8,8 @@ enum class ActionType : uint8_t
     Sync,
     GoTo,
     Dither,
-    Guide
+    Guide,
+    ClearAlign
 };
 
 class DataHandler{
