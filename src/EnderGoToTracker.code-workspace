@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "EnderGoToTracker",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"limits": "cpp",
+			"functional": "cpp",
+			"type_traits": "cpp"
+		}
+	}
+}

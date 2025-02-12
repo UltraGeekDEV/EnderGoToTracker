@@ -1,7 +1,4 @@
 #include "Quaternion.h"
-#include "Arduino.h"
-
-const double Deg2Rad = PI*360.0;
 
 Quaternion Quaternion::Euler(double x,double y,double z){
     Quaternion quat(0,0,0,0);

@@ -1,5 +1,9 @@
 #pragma once
 #include "../Vector3/Vector3.h"
+#include "Arduino.h"
+
+const double Deg2Rad = PI/360.0;
+const double Rad2Deg = 360/PI;
 
 class Quaternion{
 public:
