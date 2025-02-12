@@ -1,8 +1,6 @@
 #pragma once
 #include "./Quaternion/Quaternion.h"
 
-
-
 Vector3 GetCarthesian(Vector3 polar){
     polar.x *= Deg2Rad;
     polar.y *= Deg2Rad;
