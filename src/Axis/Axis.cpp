@@ -1,9 +1,5 @@
 #include "Axis.h"
 
-void Axis::SetConstantRate(double rate){
-    constantRate = rate * microstepping * gearReduction / stepScale;
-}
-
 void Axis::SetSlewRate(double rate){
     slewRate = rate;
 }

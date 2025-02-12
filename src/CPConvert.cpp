@@ -1,6 +1,6 @@
 #pragma once
 #include "./Quaternion/Quaternion.h"
-#include "./Vector2.h"
+#include "./Vector2/Vector2.h"
 
 Vector3 GetCarthesian(Vector2 polar){
     polar.x *= Deg2Rad;

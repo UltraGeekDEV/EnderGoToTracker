@@ -4,16 +4,14 @@ void Align::FindPole(float& x,float& y,float& z,float tileSize,float tileResolut
 
 }
 
-void Align::GoTo(double ra,double dec){
-    Vector2 position(ra,dec);
+void Align::GoTo(Vector2 pos){
+    pos = GetPolar(toMountQuat*GetCarthesian(pos));
 
-    position = GetPolar(toMountQuat*GetCarthesian(position));
-
-    RaAxis.SlewTo(position.x);
-    DecAxis.SlewTo(position.y);
+    RaAxis.SlewTo(pos.x);
+    DecAxis.SlewTo(pos.y);
 }
 
-void Align::Sync(double ra,double dec){
+void Align::Sync(Vector2 pos){
     
 }
 
@@ -27,6 +25,8 @@ void Align::ClearAlign(){
 void Align::Update(double deltaTime){
     totalAngleOffset.x += rates.x*deltaTime;
     totalAngleOffset.y += rates.y*deltaTime;
+
+    GoTo(Vector2(RaAxis.GetAngle()+totalAngleOffset.x,DecAxis.GetAngle()+totalAngleOffset.y));
 }
 
 void Align::SetConstantRate(Vector2 newRates){

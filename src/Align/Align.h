@@ -17,8 +17,8 @@ private:
     void FindPole(float& x,float& y,float& z,float tileSize,float tileResolution);
 
 public:
-    void GoTo(double ra,double dec);
-    void Sync(double ra,double dec);
+    void GoTo(Vector2 pos);
+    void Sync(Vector2 pos);
     void Update(double deltaTime);
     void SetConstantRate(Vector2 newRates);
     void ClearAlign();
