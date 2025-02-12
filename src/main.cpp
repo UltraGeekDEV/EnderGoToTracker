@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "./Axis/Axis.h"
+#include "./Align/Align.h"
 #include "./DataHandler/DataHandler.h"
 #include <RotaryEncoder.h>
 
@@ -12,14 +12,12 @@ HardwareSerial serial(USART1);
 #define DecDir PB7
 
 uint32_t prevTime;
-Axis Ra(AccelStepper(1,RAStep,RADir),96.0*51.0/11.0,16);
-Axis Dec(AccelStepper(1,DecStep,DecDir),95,16);
+Axis Ra = Axis(AccelStepper(1,RAStep,RADir),96.0*51.0/11.0,16);
+Axis Dec = Axis(AccelStepper(1,DecStep,DecDir),95,16);
+
+Align mountModel(Ra,Dec);
 
 DataHandler data(serial);
-
-struct Vector2{
-  double x,y;
-};
 
 void setup() {
 
@@ -35,7 +33,6 @@ void setup() {
 
   Ra.SetSlewRate(4000);
   Dec.SetSlewRate(4000);
-  Ra.SetConstantRate(360.0/24/60/60);
   serial.begin(9600);
   serial.println("Hi");
   prevTime = micros();
@@ -59,8 +56,7 @@ void HandleData(){
       Ra.SlewTo(vec.x);
       Dec.SlewTo(vec.y);
     } else if(data.command == ActionType::SetConstantRate){
-      Ra.SetConstantRate(vec.x);
-      Dec.SetConstantRate(vec.y);
+      mountModel.SetConstantRate(vec);
     } else if(data.command == ActionType::Guide){
       Ra.Guide(vec.x);
       Dec.Guide(vec.y);

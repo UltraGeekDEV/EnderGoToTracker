@@ -1,12 +1,11 @@
 #include "Align.h"
-#include "../CPConvert.cpp"
 
 void Align::FindPole(float& x,float& y,float& z,float tileSize,float tileResolution){
 
 }
 
 void Align::GoTo(double ra,double dec){
-    Vector3 position(ra,dec,0);
+    Vector2 position(ra,dec);
 
     position = GetPolar(toMountQuat*GetCarthesian(position));
 
@@ -26,9 +25,10 @@ void Align::ClearAlign(){
 }
 
 void Align::Update(double deltaTime){
-    totalAngleOffset += raRate*deltaTime;
+    totalAngleOffset.x += rates.x*deltaTime;
+    totalAngleOffset.y += rates.y*deltaTime;
 }
 
-void Align::SetConstantRate(double rate){
-    raRate = rate;
+void Align::SetConstantRate(Vector2 newRates){
+    rates = newRates;
 }
