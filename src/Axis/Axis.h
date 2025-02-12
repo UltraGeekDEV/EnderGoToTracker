@@ -16,7 +16,6 @@ double targetStep = 0;
 int microstepping;
 
 public:
-    void SetConstantRate(double rate);
     void SetSlewRate(double rate);
     void SetAngle(double angle);
     void SlewTo(double angle);
