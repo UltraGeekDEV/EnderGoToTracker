@@ -24,5 +24,6 @@ public:
     void GoToHome();
     void SetHome();
     void Guide(double angle);
+    double GetAngle();
     Axis(AccelStepper _stepper,double _gearReduction,int _microstepping):stepper(_stepper),gearReduction(_gearReduction),microstepping(_microstepping){}
 };
