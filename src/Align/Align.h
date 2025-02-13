@@ -14,7 +14,10 @@ private:
     int starCount;
     std::vector<Vector3> realCoords;
     std::vector<Vector3> measuredCoords;
-    void FindPole(float& x,float& y,float& z,float tileSize,float tileResolution);
+    void FindPole(double& x,double& y,double& z,double tileSize,double tileResolution,Quaternion& curBest,double& curBestEval);
+    void FindPole();
+    double GetEval();
+    Vector2 GetMountPos();
 
 public:
     void GoTo(Vector2 pos);
