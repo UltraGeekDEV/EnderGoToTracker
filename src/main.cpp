@@ -72,8 +72,7 @@ void loop() {
   prevTime = curTime;
   double deltaTime = (delta)/1000.0;
 
-  Ra.Update(deltaTime);
-  Dec.Update(deltaTime);
+  mountModel.Update(deltaTime);
 
   if(data.CheckAndHandle()){
     HandleData();

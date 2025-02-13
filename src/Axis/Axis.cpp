@@ -20,7 +20,7 @@ void Axis::SlewTo(double targetAngle){
 
     angle = targetAngle;
 
-    long requiredMovement = rotation * microstepping * gearReduction / stepScale;
+    double requiredMovement = rotation * microstepping * gearReduction / stepScale;
 
     targetStep += requiredMovement;
 }
@@ -33,8 +33,7 @@ void Axis::SetHome(){
     targetStep = 0;
 }
 
-void Axis::Update(double deltaTime){
-    targetStep += deltaTime * constantRate;
+void Axis::Update(){
     stepper.moveTo((long)targetStep);
     stepper.setMaxSpeed(slewRate);
     stepper.setSpeed(slewRate);

@@ -77,6 +77,8 @@ void Align::Update(double deltaTime){
     totalAngleOffset.y += rates.y*deltaTime;
 
     GoTo(GetMountPos()+totalAngleOffset);
+    RaAxis.Update();
+    DecAxis.Update();
 }
 
 void Align::SetConstantRate(Vector2 newRates){

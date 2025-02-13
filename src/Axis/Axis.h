@@ -19,7 +19,7 @@ public:
     void SetSlewRate(double rate);
     void SetAngle(double angle);
     void SlewTo(double angle);
-    void Update(double deltaTime);
+    void Update();
     void GoToHome();
     void SetHome();
     void Guide(double angle);
