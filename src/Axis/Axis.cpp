@@ -1,9 +1,5 @@
 #include "Axis.h"
 
-void Axis::SetConstantRate(double rate){
-    constantRate = rate * microstepping * gearReduction / stepScale;
-}
-
 void Axis::SetSlewRate(double rate){
     slewRate = rate;
 }
@@ -24,7 +20,7 @@ void Axis::SlewTo(double targetAngle){
 
     angle = targetAngle;
 
-    long requiredMovement = rotation * microstepping * gearReduction / stepScale;
+    double requiredMovement = rotation * microstepping * gearReduction / stepScale;
 
     targetStep += requiredMovement;
 }
@@ -37,8 +33,7 @@ void Axis::SetHome(){
     targetStep = 0;
 }
 
-void Axis::Update(double deltaTime){
-    targetStep += deltaTime * constantRate;
+void Axis::Update(){
     stepper.moveTo((long)targetStep);
     stepper.setMaxSpeed(slewRate);
     stepper.setSpeed(slewRate);
@@ -46,5 +41,9 @@ void Axis::Update(double deltaTime){
 }
 
 void Axis::Guide(double angle){
-    targetStep += angle;
+    targetStep += angle * microstepping * gearReduction / stepScale;
+}
+
+double Axis::GetAngle(){
+    return angle;
 }
