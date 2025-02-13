@@ -86,3 +86,7 @@ void Align::SetConstantRate(Vector2 newRates){
 Vector2 Align::GetMountPos(){
     return Vector2(RaAxis.GetAngle(),DecAxis.GetAngle());
 }
+void Align::Guide(Vector2 dir){
+    RaAxis.Guide(dir.x);
+    DecAxis.Guide(dir.y);
+}

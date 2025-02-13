@@ -23,6 +23,7 @@ public:
     void GoTo(Vector2 pos);
     void Sync(Vector2 pos);
     void Update(double deltaTime);
+    void Guide(Vector2 dir);
     void SetConstantRate(Vector2 newRates);
     void ClearAlign();
     Align(Axis& raAxis, Axis& decAxis):RaAxis(raAxis),DecAxis(decAxis),toMountQuat(),realCoords(),measuredCoords(),starCount(0),totalAngleOffset(0,0),rates(360/24.0/60.0f/60.0f,0){}

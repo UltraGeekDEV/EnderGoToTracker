@@ -42,7 +42,7 @@ void Axis::Update(double deltaTime){
 }
 
 void Axis::Guide(double angle){
-    targetStep += angle;
+    targetStep += angle * microstepping * gearReduction / stepScale;
 }
 
 double Axis::GetAngle(){

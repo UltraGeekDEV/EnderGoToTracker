@@ -50,16 +50,13 @@ void HandleData(){
     serial.println(vec.y);
 
     if(data.command == ActionType::Sync){
-      Ra.SetAngle(vec.x);
-      Dec.SetAngle(vec.y);
+      mountModel.Sync(vec);
     }else if(data.command == ActionType::GoTo){
-      Ra.SlewTo(vec.x);
-      Dec.SlewTo(vec.y);
+      mountModel.GoTo(vec);
     } else if(data.command == ActionType::SetConstantRate){
       mountModel.SetConstantRate(vec);
     } else if(data.command == ActionType::Guide){
-      Ra.Guide(vec.x);
-      Dec.Guide(vec.y);
+      mountModel.Guide(vec);
     }
   }
 }
